@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <div class="main-header"></div>
+        <div class="sub-header">
+            <div class="sub-header-left" style="display: flex;  width: 100vh">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+    </header>
+
+    <main>
+        <div class="calculator-template">
+            <header class="calculator-header"> <p class="head">Temperature Converter</p></header>
+            <form action="" id="calculator-inputs"> 
+                <select name="inputs" id="inputs">
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="celsius">Celsius</option>
+                    <option value="kelvin">Kelvin</option>
+                    <option value="réaumur">Réaumur</option>
+                    <option value="rankine">Rankine</option>
+                </select>
+
+                <select name="outputs" id="outputs">
+                    <option value="fahrenheit">Fahrenheit</option>
+                    <option value="celsius">Celsius</option>
+                    <option value="kelvin">Kelvin</option>
+                    <option value="réaumur">Réaumur</option>
+                    <option value="rankine">Rankine</option>
+                </select>
+
+                <div id="input-Cal">
+                    <label for="degrees">Enter Number</label>
+                    <input type="text" id="degrees" inputmode="decimal" size="12">
+                    <button id="calculate">Calculate</button>
+                </div>
+
+                <div id="answer-area">
+                    <h6>Answer:</h6>
+                    <div id="answer"></div>
+                </div>
+
+            
+            </form>
+
+        </div>
+
+        <div class="main">
+            <div id="equation-used"></div>
+        </div>
+    </main>
+
+    <script>
+        const calculator = document.getElementById("calculator-inputs");
+        const inputs = document.getElementById("inputs");
+        const outputs = document.getElementById("outputs");
+        const degreesInput = document.getElementById("degrees");
+        const answer = document.getElementById("answer");
+        const equationUsed = document.getElementById("equation-used");
+
+        calculator.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const inputUnit = inputs.value;
+            const outputUnit = outputs.value;
+            const degrees = parseFloat(degreesInput.value);
+
+            const conversion = {
+                fahrenheit: {
+                    celsius: `(degrees - 32) * 5/9`,
+                    kelvin: `(degrees - 32) * 5/9 + 273.15`,
+                    réaumur: `(degrees - 32) * 4/9`,
+                    rankine: `degrees + 459.67`,
+                },
+                celsius: {
+                    fahrenheit: `(degrees * 9/5) + 32`,
+                    kelvin: `degrees + 273.15`,
+                    réaumur: `(degrees * 4/5)`,
+                    rankine: `(degrees + 273.15) * 9/5`,
+                },
+                kelvin: {
+                    fahrenheit: `(degrees - 273.15) * 9/5 + 32`,
+                    celsius: `degrees - 273.15`,
+                    réaumur: `(degrees - 273.15) * 4/5`,
+                    rankine: `degrees * 9/5`,
+                },
+                réaumur: {
+                    fahrenheit: `degrees * 2.25 + 32`,
+                    celsius: `degrees * 1.25`,
+                    kelvin: `degrees * 1.25 + 273.15`,
+                    rankine: `degrees * 2.25 + 491.67`,
+                },
+                rankine: {
+                    fahrenheit: `degrees - 459.67`,
+                    celsius: `(degrees - 491.67) * 5/9`,
+                    kelvin: `degrees * 5/9`,
+                    réaumur: `(degrees - 491.67) * 4/9`,
+                }
+            };
+
+            if (inputUnit === outputUnit) {
+                answer.innerHTML = degrees;
+                equationUsed.innerHTML = "Enter different units";
+            } else {
+                const arithmeticUsed = conversion[inputUnit][outputUnit];
+                answer.innerHTML = eval(arithmeticUsed);
+                equationUsed.innerHTML = `Arithmetic Used: ${arithmeticUsed.replace("degrees", "x")}`;
+            }
+        });
+    </script>
+</body>
+</html>

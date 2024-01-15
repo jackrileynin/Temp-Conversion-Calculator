@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+
+}
+main{
+    display: flex;
+    
+
+}
+
+body{
+    background-color: #fcdcdc;
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+
+}
+html{
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+#header{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+    background-color: #300b0b;
+    
+}
+
+#header .main-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    
+    position: relative;
+    z-index: 1000;
+}
+
+#header .sub-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 100%;
+    background-color: #300b0b;
+    
+    z-index: 100;
+}
+.calculator-template{
+    width: 40%;
+    height: 100vh;
+    background-color: #fcdcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 10%;
+    box-shadow: #1b1b1b 0px 0px 10px;
+}
+
+.calculator-template #calculator-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: #1b1b1b 2px solid;
+}
+
+
+.calculator-template #calculator-inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0;
+    width: 100%;
+    height: 231px;
+    flex: 2 1 0;
+}
+
+
+#input-Cal{
+
+}
+
+#answer-area{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 10px;
+    
+    font-weight: 300;
+    color: #1b1b1b;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+
+
+.equation-used{
+    width: 40%;
+    height: 100vh;
+    background-color: #fcdcdc;
+}
+
+.sub-header-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    height: 30px;
+    padding: 0 10%;
+}
+
+.sub-header-left a{
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+
+@media screen and (max-width: 768px){
+    main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calculator-template{
+        width: 100%;
+        height: 100vh;
+        padding: 0 10%;
+     
+    }
+
+    #calculator-inputs{
+        width: 40%;
+    }
+}
